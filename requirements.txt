@@ -1,11 +1,15 @@
+beautifulsoup4==4.9.3
 certifi==2020.4.5.1
 chardet==3.0.4
 idna==2.9
+lxml==4.6.2
 Naked==0.1.31
 pyasn1==0.4.8
 pycryptodome==3.9.7
 PyYAML==5.3.1
 requests==2.23.0
 rsa==4.0
+selenium==3.141.0
 shellescape==3.8.1
+soupsieve==2.2
 urllib3==1.25.9
