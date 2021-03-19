@@ -15,7 +15,7 @@ def out_put_link():
 
 
 def write2disk(fileName, html):
-    fo = open('.data/' + fileName + ".html", "w")
+    fo = open('.data/' + fileName + ".html", "w", encoding='UTF-8')
     fo.write(html)
     fo.close()
 
@@ -42,9 +42,9 @@ for item in soup.find_all('a'):
         print(item.text)
         if "Spring" in item.text:
             r = requests.get(item.get('href'))
-            # write2disk(str(sortNo) + '-' + item.text, r.text)
-            fileName = str(sortNo) + '-' + item.text
-            pdfkit.from_url(item.get('href'), '.out/' + fileName + '.pdf')
+            write2disk(str(sortNo) + '-' + item.text, r.text)
+            #fileName = str(sortNo) + '-' + item.text
+            # pdfkit.from_url(item.get('href'), '.out/' + fileName + '.pdf')
         URL_LINK_LIST.append(item.get('href'))
         # webbrowser.open_new(item.get('href'))
     sortNo = sortNo + 1
