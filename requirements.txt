@@ -137,7 +137,7 @@ PyScreeze==0.1.26
 PyTweening==1.0.3
 PyYAML==5.3.1
 requests==2.23.0
-rsa==4.0
+rsa==4.1
 rubicon-objc==0.4.0
 selenium==3.141.0
 shellescape==3.8.1
