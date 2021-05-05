@@ -24,7 +24,8 @@ while pageNo <= totalPage:
     startId = ret[0][0]
     endId = ret[len(ret)-1][0]
     print(">>>>>>>处理从startId:{0} 到 endId:{1} 的数据 ... ".format(startId, endId))
-    mysql_cursor.execute( "call sku_stat_by_month_updating({0}, {1});".format(startId,endId))
+ #   mysql_cursor.execute( "call sku_stat_by_month_updating({0}, {1});".format(startId,endId))
+    mysql_cursor.callproc( "sku_stat_by_month_updating", args=(startId,endId))
     results=mysql_cursor.fetchone()
     print(results[0])
     pageNo = pageNo + 1
@@ -37,3 +38,6 @@ endTime = time.clock()
 print("finish! endTime:{0} 耗时:{1}", endTime, (endTime-startTime))
 mysql_cursor.close()
 mysql.close()
+
+## issue： 调用存储过程无法自动提交
+#   mysql_cursor.execute( "call sku_stat_by_month_updating({0}, {1});".format(startId,endId))
