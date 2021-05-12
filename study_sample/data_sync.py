@@ -10,7 +10,7 @@ mysql_cursor = mysql.cursor()
 mysql_cursor.execute("SELECT count(1) from dcp_dwm_erp_sku_stat_month where merchant_id = 'b7337c0a-7a97-4c1f-934c-6c1926594990'")
 totalCount = mysql_cursor.fetchone()[0]
 pageSize = 50
-pageNo = 1
+pageNo = 5
 # startIdx = (pageNo -1)*pageSize
 offset = pageSize
 totalPage = (totalCount/pageSize) if totalCount%pageSize == 0 else math.floor((totalCount/pageSize)) + 1
@@ -41,3 +41,4 @@ mysql.close()
 
 ## issue： 调用存储过程无法自动提交
 #   mysql_cursor.execute( "call sku_stat_by_month_updating({0}, {1});".format(startId,endId))
+## mysql_cursor.callproc( "sku_stat_by_month_updating", args=(startId,endId)) 偶然又失效...
