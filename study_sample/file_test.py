@@ -32,7 +32,8 @@ import os
 # os.path.walk(path, visit, arg)  #遍历path，进入每个目录都调用visit函数，visit函数必须有3个参数(arg, dirname, names)，dirname表示当前目录的目录名，names代表当前目录下的所有文件名，args则为walk的第三个参数
 # os.path.supports_unicode_filenames  #设置是否支持unicode路径名
 
-rootdir = '/Users/admin/Documents/prj/OpenSource/PYTHON_PRJ/Python-Codebase/study_sample'
+# rootdir = '/Users/admin/Documents/prj/OpenSource/PYTHON_PRJ/Python-Codebase/study_sample'
+rootdir = 'F:\demoCode\PYTHON_WORKSPACE\Python-Codebase\study_sample'
 list = os.listdir(rootdir)  # 列出文件夹下所有的目录与文件
 for i in range(0, len(list)):
     path = os.path.join(rootdir, list[i])
