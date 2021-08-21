@@ -4,26 +4,54 @@ import os
 import time
 from selenium import webdriver
 
+'''
+本文件有问题.
+'''
 
-appState = {
-    "recentDestinations": [
-        {
-            "id": "Save as PDF",
-            "origin": "local"
-        }
-    ],
+# settings = {
+#     "appState": {
+#         "recentDestinations": [
+#             {
+#                 "id": "Save as PDF",
+#                 "origin": "local",
+#                 "account": "",
+#             }
+#         ],
+#         "selectedDestinationId": "Save as PDF",
+#         "version": 2
+#     }
+# }
+settings = {
+    "recentDestinations": [{
+        "id": "Save as PDF",
+        "origin": "local",
+        "account": ""
+    }],
     "selectedDestinationId": "Save as PDF",
-    "version": 2
+    "version": 2,
+    "isHeaderFooterEnabled": False,
+    "mediaSize": {
+        "height_microns": 297000,
+        "name": "ISO_A4",
+        "width_microns": 210000,
+        "custom_display_name": "A4"
+    },
+    "customMargins": {},
+    "marginsType": 2,
+    "isCssBackgroundEnabled": True
 }
 profile = {
-    'printing.print_preview_sticky_settings.appState': json.dumps(appState),
+    'printing.print_preview_sticky_settings': json.dumps(settings),
     'savefile.default_directory': './articles'
 }
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option('prefs', profile)
 chrome_options.add_argument('--kiosk-printing')
+
+# chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(options=chrome_options)
-driver.implicitly_wait(60)
+# driver.implicitly_wait(60)
+driver.implicitly_wait(5)
 
 try:
     title = '测试保存pdf'
@@ -32,7 +60,8 @@ try:
     time.sleep(5)
     # 保存PDF
     temp_title = driver.title
-    driver.execute_script('window.print();')
+    print(temp_title)
+    driver.execute_script('document.title="'+temp_title+'";window.print();')
     time.sleep(10)
     # os.rename('./articles/' + temp_title + '.pdf', './articles/' + title + '.pdf')
 except Exception as e:

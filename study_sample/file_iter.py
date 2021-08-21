@@ -44,7 +44,8 @@ if __name__ == "__main__":
     # root_path = r"E:\www\RedisSource"
     # root_path = r"E:\www\SpringBoot"
     # root_path = r"E:\www\SpringMVC"
-    root_path = r"E:\www\DatabaseDesign"
+    # root_path = r"E:\www\DatabaseDesign"
+    root_path = r"/Users/admin/Documents/prj/develop/sites/www/SpringSeries"
     # root_path = r"E:\www\Dubbo"
     #用来存放所有的文件路径
     file_list = []
@@ -56,9 +57,16 @@ if __name__ == "__main__":
 
     print(dir_list)
     filter_list = ['index.html', 'footer.html', 'leftmenu.html', 'main.html', 'top.html']
+    count = 0
     for filePath in file_list:
         fileName = os.path.basename(filePath)
-        if fileName not in filter_list and fileName.endswith('.html'):
-            s = Template("<li><a href=\"$fileName\" target=\"main\"> $fileName </a></li>")
+        if fileName not in filter_list and fileName.endswith('.html') or fileName.endswith('.pdf'):
+            count = count + 1
+            # s = Template("<li><a href=\"$fileName\" target=\"main\"> $fileName </a></li>")
+            # finalText = s.substitute(fileName=fileName)
+            # s = Template("<li><a href=\"/pdfjs/web/viewer.html?file=$fileNo\" target=\"main\"> $fileName </a></li>")
+            # finalText = s.substitute(fileNo='a' + str(count) + '.pdf', fileName=fileName)
+            s = Template("<li><a href=\"/pdfjs/web/viewer.html?file=$fileName\" target=\"main\"> $fileName </a></li>")
             finalText = s.substitute(fileName=fileName)
+
             print(finalText)
