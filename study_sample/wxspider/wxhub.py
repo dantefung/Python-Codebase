@@ -232,7 +232,7 @@ def pipe_articles(fakeid, query=''):
 
     curr_searched = sum(map(lambda x: 1 if x == '1' else 0, mask))
     # if not total:
-    #     raise Exception('搜索不到文章, 或者接口被反爬, 请删除cookies.json文件 等几分钟再试, 或换个账号试试.')
+    #     raise Exception('搜索不到 文章, 或者接口被反爬, 请删除cookies.json文件 等几分钟再试, 或换个账号试试.')
     print(f"本次搜索到:{total_page} 页文章, 已处理:{curr_searched}页, 共在 todo.list 中包含 {len(data)} 条文章链接 ...")
     todo['__total_cnt'] = total
     todo['__mask'] = ''.join(mask)
@@ -345,6 +345,7 @@ def crawl_whole_page(url, sdir, url_cache):
 
 
 def crawl_by_custom_pipe(url, sdir, url_cache):
+    # 动态导入模块
     if not Input.custom_pipe:
         sps = (Input.args.pipe if Input.args.pipe else '').split(',')
         for sp in sps:
@@ -360,9 +361,13 @@ def crawl_by_custom_pipe(url, sdir, url_cache):
 
 
 def pipe_crawl_articles(arti_info):
+    print(arti_info)
+    # 去掉标题的一些特殊字符
     title_4_dir = arti_info['title'].replace(':', '').replace(' ', '').replace(':', '').replace('/', '').replace('|',
                                                                                                                  '').replace(
         '<', '').replace('>', '').replace('?', '').replace('"', '')
+    # 处理只发纯文本消息那种,防止文件夹名字过长.
+    title_4_dir = title_4_dir[0:30]
     sdir = os.path.join(Input.out_dir, Input.fake_name, title_4_dir)
     if not os.path.exists(sdir):
         os.makedirs(sdir, exist_ok=True)
@@ -453,7 +458,7 @@ def main(chrome):
                 chrome = 'chromedriver'
             else:
                 chrome = input('输入webchrome(或者将chromedirver放到/usr/local/bin目录下):').strip()
-        driver = webdriver.Chrome(executable_path=chrome)
+            driver = webdriver.Chrome(executable_path=chrome)
     except Exception as e:
         print("请配置好chromedriver的路径!", e)
 
@@ -495,6 +500,7 @@ if __name__ == '__main__':
                         help='指定最大翻页次数, 每次同一个公众号, 翻页太多次会被ban, 0:不翻页 只处理todo.list, 默认<0:无限制 >0:翻页次数')
 
     Input.args = parser.parse_args()
+    # print(Input.args)
     Input.fake_name = Input.args.biz
     Input.crawl_method = Input.args.method if Input.args.method else 'all_images'
     Input.page_sleep = int(Input.args.sleep) if Input.args.sleep else 1

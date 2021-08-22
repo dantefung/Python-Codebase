@@ -4,15 +4,12 @@
 '''
 
 def crawl(arti_url, arti_dir):
-    handledUrl = []
     '''
     必要实现函数, 在处理文章链接时调用.
     arti_url: 公众号文章链接.
     arti_dir: 用于存储当前公众号的目录.
     返回值: []存放所有处理完成的url链接.
     '''
-    print('进入pipe_example crawl方法...')
+    print('我被调用了...')
     print(arti_url, arti_dir)
-    handledUrl.append(arti_url)
-    return handledUrl
     # pass
