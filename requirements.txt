@@ -145,7 +145,7 @@ selenium==3.141.0
 shellescape==3.8.1
 six==1.15.0
 soupsieve==2.2
-urllib3==1.25.9
+urllib3==1.26.5
 wechatsogou==4.5.4
 Werkzeug==2.0.1
 wkhtmltopdf==0.2
