@@ -5,14 +5,20 @@
 '''
 from study_sample.myutils.log_util import logFactory
 
-loggger = logFactory("test").log
+log = logFactory("test").log
 
 
 def test():
-    loggger.info("test log info")
-    loggger.debug("test log debug")
-    loggger.error("test log error")
-    loggger.warning("test log warn")
+    log.info("test log info")
+    log.debug("test log debug")
+    log.error("test log error")
+    log.warning("test log warn")
+    arr = [1, 2, 3, 4]
+    log.info(arr)
+    log.info('>>>>>%s', arr)
+    di = {'a': 22}
+    log.info('>>>>>%s %s', arr, di)
+    # 错误用法：  log.info('aaa', 'bbb')
 
 
 if __name__ == '__main__':
