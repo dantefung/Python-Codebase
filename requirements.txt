@@ -15,6 +15,7 @@ PyAutoGUI==0.9.52
 pycryptodome==3.9.7
 PyGetWindow==0.0.9
 PyMsgBox==1.0.9
+PyMySQL==1.0.2
 pyobjc==7.1
 pyobjc-core==7.1
 pyobjc-framework-Accounts==7.1
@@ -135,6 +136,7 @@ pyperclip==1.8.2
 PyRect==0.1.4
 PyScreeze==0.1.26
 PyTweening==1.0.3
+pytz==2021.1
 PyYAML==5.3.1
 requests==2.23.0
 rsa==4.0
@@ -144,5 +146,7 @@ shellescape==3.8.1
 six==1.15.0
 soupsieve==2.2
 urllib3==1.25.9
+wechatsogou==4.5.4
+Werkzeug==2.0.1
 wkhtmltopdf==0.2
 xlrd==2.0.1

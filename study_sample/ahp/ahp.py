@@ -1,3 +1,6 @@
+# coding:utf-8
+import numpy as np
+
 class AHP:
     """
     相关信息的传入和准备
@@ -79,3 +82,11 @@ class AHP:
         print("特征值法计算得到的权重向量为：\n", array_weight)
         # 返回权重向量的值
         return array_weight
+
+if __name__ == '__main__' :
+    b1 = np.array([[1, 1 / 3, 1 / 8], [3, 1, 1 / 3], [8, 3, 1]])
+    # 得到b1的AHP对象，便于后面使用
+    ahp1 = AHP(b1)
+    # 算术平均法求权重
+    weight1 = ahp1.cal_weight_by_arithmetic_method()
+
