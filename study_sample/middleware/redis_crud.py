@@ -1,15 +1,20 @@
-from rediscluster import StrictRedisCluster
+from rediscluster import RedisCluster
+
+redis_host = "127.0.0.1"
 
 # Redis 集群节点
 startup_nodes = [
-    {"host": "10.4.132.109", "port": "6379"},
-    {"host":"10.4.132.109", "port": "6379"},
-    {"host": "10.4.132.109", "port": "6379"},
+    {"host": redis_host, "port": "7000"},
+    {"host": redis_host, "port": "7001"},
+    {"host": redis_host, "port": "7002"},
+    {"host": redis_host, "port": "7003"},
+    {"host": redis_host, "port": "7004"},
+    {"host": redis_host, "port": "7005"},
     # 添加其他节点...
 ]
 
 # 创建 Redis 集群连接
-redis_client = StrictRedisCluster(startup_nodes=startup_nodes, decode_responses=True)
+redis_client = RedisCluster(startup_nodes=startup_nodes, decode_responses=True)
 
 # 创建数据
 def create_data(key, value):
