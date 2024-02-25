@@ -2,7 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+node_modules
+pacakage.json
+geckodriver.log
 # C extensions
 *.so
 
